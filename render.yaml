@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: dopa-mine-api
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: KAKAO_REST_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
