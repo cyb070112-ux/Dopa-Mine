@@ -43,7 +43,7 @@ function Spinner() {
   )
 }
 
-export default function SlotCard({ slot, slotIndex, onReroll, isRerolling, rerollFailed }) {
+export default function SlotCard({ slot, slotIndex, slotNumber, onReroll, isRerolling, rerollFailed }) {
   const config = TYPE_CONFIG[slot.type] ?? DEFAULT_STYLE
   const categoryLabel = formatCategory(slot.kakao_category)
   const hasLink = Boolean(slot.place_url)
@@ -51,20 +51,18 @@ export default function SlotCard({ slot, slotIndex, onReroll, isRerolling, rerol
   return (
     <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 border-l-4 ${config.border}${isRerolling ? ' slot-rerolling' : ''}`}>
 
-      {/* 상단: 슬롯 타입 뱃지 + 카카오 카테고리 태그 ←→ 도착 시각 */}
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${config.badge}`}>
-            {slot.type}
+      {/* 상단: 번호 + 슬롯 타입 뱃지 + 카카오 카테고리 태그 */}
+      <div className="flex items-center gap-2 flex-wrap mb-2">
+        <span className="w-5 h-5 rounded-full bg-[#1A3A5C] dark:bg-gray-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0">
+          {slotNumber}
+        </span>
+        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${config.badge}`}>
+          {slot.type}
+        </span>
+        {categoryLabel && (
+          <span className="text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
+            {categoryLabel}
           </span>
-          {categoryLabel && (
-            <span className="text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
-              {categoryLabel}
-            </span>
-          )}
-        </div>
-        {slot.arrival_time && (
-          <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0">{slot.arrival_time} 도착</span>
         )}
       </div>
 

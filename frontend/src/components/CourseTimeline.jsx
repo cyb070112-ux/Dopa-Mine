@@ -28,22 +28,17 @@ export default function CourseTimeline({
       </div>
 
       {/* 슬롯 목록 */}
-      <div>
+      <div className="space-y-3">
         {courseData.slots.map((slot, i) => (
-          <div key={i}>
-            <SlotCard
-              slot={slot}
-              slotIndex={i}
-              onReroll={onReroll}
-              isRerolling={rerollingIndex === i}
-              rerollFailed={failedSlots?.has(i) ?? false}
-            />
-            {i < courseData.slots.length - 1 && (
-              <div className="flex justify-center py-2 text-gray-300 dark:text-gray-600 text-xl select-none">
-                ↓
-              </div>
-            )}
-          </div>
+          <SlotCard
+            key={i}
+            slot={slot}
+            slotIndex={i}
+            slotNumber={i + 1}
+            onReroll={onReroll}
+            isRerolling={rerollingIndex === i}
+            rerollFailed={failedSlots?.has(i) ?? false}
+          />
         ))}
       </div>
 
