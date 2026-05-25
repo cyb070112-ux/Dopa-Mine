@@ -4,7 +4,7 @@ const ACT_STYLE    = { badge: 'bg-blue-100 text-blue-600 dark:bg-blue-900/40 dar
 const LEISURE_STYLE = { badge: 'bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-400',   border: 'border-green-400'  }
 const DEFAULT_STYLE = { badge: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400',           border: 'border-gray-400'   }
 
-const TYPE_CONFIG: Record<string, { badge: string; border: string }> = {
+const TYPE_CONFIG = {
   '밥집':        FOOD_STYLE,
   '술집/바':     FOOD_STYLE,
   '분식/면류':   FOOD_STYLE,
